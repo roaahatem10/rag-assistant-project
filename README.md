@@ -1,4 +1,5 @@
-image# RAG Study Assistant
+
+# RAG Study Assistant
 
 A Retrieval-Augmented Generation (RAG) based AI Study Assistant that answers questions from educational documents using semantic retrieval, vector embeddings, and a locally hosted Large Language Model.
 
@@ -6,23 +7,25 @@ The system retrieves relevant document chunks from a ChromaDB vector store and u
 
 The project provides a FastAPI backend for the RAG pipeline and a Streamlit frontend for an interactive chat-style interface.
 
-1. Project Overview
+## 1. Project Overview
 The goal of this project is to build a complete end-to-end RAG application that can answer questions from a predefined collection of study documents.
 
 Instead of allowing the language model to answer using only its pretrained knowledge, the system follows a retrieval-first architecture:
 
-A user submits a question.
-The question is converted into an embedding.
-ChromaDB searches the vector store for semantically similar document chunks.
-The most relevant chunks and their metadata are retrieved.
-The retrieved context is provided to the local LLM.
-The LLM generates an answer based only on the retrieved documents.
-The backend returns the answer together with the retrieved sources.
-The Streamlit frontend displays the answer and sources to the user.
+  1.A user submits a question.
+  2.The question is converted into an embedding.
+  3.ChromaDB searches the vector store for semantically similar document chunks.
+  4.The most relevant chunks and their metadata are retrieved.
+  5.The retrieved context is provided to the local LLM.
+  6.The LLM generates an answer based only on the retrieved documents.
+  7.The backend returns the answer together with the retrieved sources.
+  8.The Streamlit frontend displays the answer and sources to the user.
+
 This approach improves grounding and reduces unsupported answers.
 
-2. Domain and Data Description
-Domain
+## 2. Domain and Data Description
+# Domain
+
 The project focuses on educational and machine learning study materials.
 
 The main source document used for the RAG system is:
@@ -97,6 +100,7 @@ The page-aware metadata allows the system to return not only relevant text but a
                            |
                            v
                   Streamlit Frontend
+
 4. RAG Pipeline
 The RAG pipeline consists of the following stages.
 
