@@ -25,32 +25,17 @@ Instead of allowing the language model to answer using only its pretrained knowl
 This approach improves grounding and reduces unsupported answers.
 
 ## 2. Domain and Data Description
-# Domain
+**Domain: Study Assistant.** 
 
-The project focuses on educational and machine learning study materials.
+The starter corpus (`data/raw_docs/`) contains 4 short PDFs of
+programming study notes: Python variables & data types, Python functions, data structures
+(lists/dicts/sets), and OOP basics. They were generated with `data/generate_sample_docs.py` so
+the project works out of the box with real, text-extractable PDFs. You can freely replace or add
+your own PDFs (lecture notes, slides exported as PDF, textbook excerpts) as long as they are
+text-based rather than scanned images — scanned PDFs would need an OCR step not included here.
 
-The main source document used for the RAG system is:
+**Data Processing**
 
-Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow
-
-The document contains educational material covering topics such as:
-
-Machine Learning fundamentals
-Supervised and unsupervised learning
-Classification
-Regression
-Model evaluation
-Cross-validation
-ROC curves
-Ensemble methods
-Random Forests
-Neural Networks
-Generative Adversarial Networks
-Reinforcement Learning
-Q-learning
-Bias and variance
-Model training and regularization
-Data Processing
 The document was processed page by page and divided into smaller chunks suitable for semantic retrieval.
 
 Each chunk stores metadata including:
@@ -64,7 +49,8 @@ The final ChromaDB collection contains:
 
 The page-aware metadata allows the system to return not only relevant text but also the source and page where the information was found.
 
-3. System Architecture
+## 3. System Architecture
+                      
                          User
                            |
                            v
@@ -102,22 +88,23 @@ The page-aware metadata allows the system to return not only relevant text but a
                            v
                   Streamlit Frontend
 
-4. RAG Pipeline
+## 4. RAG Pipeline
+
 The RAG pipeline consists of the following stages.
 
-4.1 Document Loading
+**4.1 Document Loading**
 The source document is loaded and processed page by page.
 
 The notebook inspects the document and prepares the content for chunking.
 
-4.2 Chunking
+**4.2 Chunking**
 The document is divided into smaller chunks.
 
 Chunking allows the retrieval system to search for specific pieces of information instead of processing the entire document for every question.
 
 The chunking configuration is defined in the RAG notebook and exported as part of the project configuration.
 
-4.3 Embeddings
+**4.3 Embeddings**
 Each document chunk is converted into a numerical vector representation using:
 
 all-MiniLM-L6-v2
