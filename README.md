@@ -93,11 +93,13 @@ The page-aware metadata allows the system to return not only relevant text but a
 The RAG pipeline consists of the following stages.
 
 **4.1 Document Loading**
+
 The source document is loaded and processed page by page.
 
 The notebook inspects the document and prepares the content for chunking.
 
 **4.2 Chunking**
+
 The document is divided into smaller chunks.
 
 Chunking allows the retrieval system to search for specific pieces of information instead of processing the entire document for every question.
@@ -105,29 +107,28 @@ Chunking allows the retrieval system to search for specific pieces of informatio
 The chunking configuration is defined in the RAG notebook and exported as part of the project configuration.
 
 **4.3 Embeddings**
+
 Each document chunk is converted into a numerical vector representation using:
 
 all-MiniLM-L6-v2
 These embeddings capture the semantic meaning of the text and allow the system to perform similarity-based retrieval.
 
-4.4 Vector Store
+**4.4 Vector Store**
+
 The embeddings are stored in:
 
 ChromaDB
 The persisted vector store contains the embedded document chunks together with their metadata.
 
-4.5 Retrieval
+**4.5 Retrieval**
+
 When a user asks a question, the question is embedded and compared with the stored document embeddings.
 
 The system retrieves the most relevant chunks using semantic similarity.
 
 The retrieval process is page-aware and returns metadata such as:
 
-Source: Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow
-Page: 60
-Distance: 0.5688
-4.6 Generation
-The retrieved chunks are passed to the local LLM running through Ollama.
+
 
 The model used is:
 
