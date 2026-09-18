@@ -1,3 +1,4 @@
+<img width="1230" height="641" alt="image" src="https://github.com/user-attachments/assets/6561f15e-269d-4e5d-a122-92b25c7739fa" />
 
 # RAG Study Assistant
 
